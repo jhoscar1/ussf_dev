@@ -1,0 +1,66 @@
+build_hook_file.path: /var/www/ussfphilly/code/sites/default/fetcher.make.php
+'client.authentication class': \FetcherServices\Authentication\OpenSshKeys
+code_fetcher.class: Fetcher\CodeFetcher\Download
+code_fetcher.config: {  }
+code_fetcher.vcs_mapping:
+  git: Fetcher\CodeFetcher\VCS\Git
+configuration.ephemeral:
+  - initialized
+  - simulate
+  - verbose
+  - environment.remote
+  - data.admin.user.password
+configurators:
+  - \Fetcher\Configurator\DrushPrompts
+'database class': \Fetcher\DB\Mysql
+database.admin.port: null
+database.admin.user.name: null
+database.admin.user.password: null
+database.database: ussfphilly
+database.driver: mysql
+database.hostname: localhost
+database.port: 3306
+database.user.hostname: localhost
+database.user.name: ussfphilly
+database.user.password: lJRkYOhUa7bTnXgQyGH6
+database_synchronizer.class: Fetcher\DBSynchronizer\DrushSqlSync
+drush_alias.path: /home/vagrant/.drush/ussfphilly.aliases.drushrc.php
+environment.local: local
+environments: {  }
+'fetcher client class': \Fetcher\Utility\HTTPClient
+'file synchronizer class': Fetcher\FileSynchronizer\RsyncFileSync
+hostname: ussfphilly.local
+info_fetcher.class: FetcherServices\InfoFetcher\FetcherServices
+info_fetcher.config:
+  host: 'https://extranet.zivtech.com'
+'log function': drush_log
+log.function: drush_log
+mysql.binary: mysql
+name: ussfphilly
+name.global: ussfphilly
+profile: bear
+rsync-binary: rsync
+'server class': \Fetcher\Server\Apache2
+server.disable_site_command: 'a2dissite ussfphilly'
+server.enable_site_command: 'a2ensite ussfphilly'
+server.host_conf_path: /etc/apache2/sites-available/ussfphilly
+server.port: 80
+server.restart_command: 'sudo service apache2 reload'
+server.user: www-data
+server.vhost_available_folder: /etc/apache2/sites-available
+server.vhost_enabled_folder: /etc/apache2/sites-enabled
+server.webroot: /var/www
+site: default
+site.code_directory: /var/www/ussfphilly/code
+site.directory: /var/www/ussfphilly/code/sites/default
+'site.info path': /var/www/ussfphilly/site_info.yaml
+site.webroot: /var/www/ussfphilly/webroot
+site.working_directory: /var/www/ussfphilly
+symlinks:
+  /var/www/ussfphilly/public_files: /var/www/ussfphilly/code/sites/default/files
+  /var/www/ussfphilly/code: /var/www/ussfphilly/webroot
+'system class': \Fetcher\System\Posix
+'system hostname': local
+task_loader.class: \Fetcher\Task\TaskLoader
+version: '7'
+webroot_subdirectory: webroot
